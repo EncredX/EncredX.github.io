@@ -1,0 +1,39 @@
+html,body{
+  margin:0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  color:white;
+
+}
+#border-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  position: absolute;
+}
+
+p{
+  display: flex;
+  justify-content:  center;
+  font-size: 54px;
+  font-family: Avenir LT Std;
+  border: 6px solid #00FE00 ;
+  width: 300px;
+  padding: 10px;
+  letter-spacing: 10px;
+}
+p span{
+  font-family: Code Bold;
+}
+#particles-js{
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
