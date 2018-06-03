@@ -1,34 +1,55 @@
 <?php
+include 'db-conn.php';
 
-$host="localhost";
-$user="root";
-$password="";
-$db="loginsystem";
+    if(isset($_POST['user_uname'])){
 
-$con = mysql_connect($host,$user,$password);
-mysql_connect($host,$user,$password);
-mysql_select_db($db);
+        $uname=$_POST['user_uname'];
+        $password=$_POST['user_pwd'];
 
-if(isset($_POST['user_uname'])){
+        $sql="SELECT * FROM users WHERE user_uname='".$uname."' AND user_pwd='".$password."' limit 1";
 
-    $uname=$_POST['user_uname'];
-    $password=$_POST['user_pwd'];
+        $result = mysql_query($sql);
 
-    $sql="SELECT * FROM users WHERE user_uname='".$uname."' AND user_pwd='".$password."' limit 1";
+        if(mysql_num_rows($result) == 1){
+            echo " You Have Successfully Logged in, "."$uname";
 
-    $result = mysql_query($sql);
 
-    if(mysql_num_rows($result) == 1){
-        echo " You Have Successfully Logged in";
+            $userquery = mysql_query("SELECT level FROM users WHERE user_uname='$uname'");
+            if (mysql_num_rows($userquery) != 1){
+                die("User could not be found!");
+            }
 
-        $sql="SELECT user_level FROM users WHERE user_uname='".$uname."' ";
-        echo "$sql";
-        // header("Location: dashboard.php"); // Redirecting To Other Page
-        // exit();
-        } else {
-        header("Location: index.php"); // Redirecting To Other Page
-        echo "Username or Password is invalid";
-        exit();
-      }
-//https://www.tutorialspoint.com/php/mysql_select_php.htm
-?>
+    //LEVEL FETCHING
+            while($row = mysql_fetch_array($userquery, MYSQL_ASSOC)){
+              $userlevel = $row['level'];
+
+            }
+
+//LEVEL FUNCTION
+            function levelurl($userlevel){
+              if( $userlevel == 0 ){
+                header("Location: level0.php");
+                exit();
+              }
+
+              elseif ($userlevel == 1) {
+                header("Location: level1.php");
+              }
+
+              else{
+                header("Location: index.php");
+              }
+
+            }
+
+            levelurl();
+          }
+
+            else {
+ // print
+            echo "Username or Password is invalid";
+
+
+                    }
+}
+    //https://www.tutorialspoint.com/php/mysql_select_php.htm

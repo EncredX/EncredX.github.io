@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
     <meta charset="utf-8">
-    <title></title>
+    <title>EncredX</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="script.js">
+
+    </script>
+    <script src="Scripts/particles.js">
+    </script>
+
+        <script type="text/javascript">
+    //     particlesJS.load('particles-js', 'Scripts/particles.json', function() {
+    // console.log('callback - particles.js config loaded');
+    // });
+        </script>
   </head>
   <body>
+    <!-- <img src="bgex.jpg" id="background-img"> -->
+    <div id="background-img">
 
-<div class="login-page">
+      <!-- Heading -->
 
-  <form method="post" action="login-conn.php">
-    <input type="text" name="user_uname" placeholder="Username">
-    <input type="password" name="user_pwd" placeholder="Password">
+        <div id="paragraph" >
 
-    <input type="submit" name="submit" value="Login">
+            <p>EncredX</p>
+            <a href="login.php" class="start-button"><button>START</button></a>
 
-  </form>
-          <br><br>
+        </div>
 
-    <p>Haven't registered yet?<a href="signup.php">Register Here</a></p>
-</div>
+
+    </div>
+
+
 
   </body>
 </html>
